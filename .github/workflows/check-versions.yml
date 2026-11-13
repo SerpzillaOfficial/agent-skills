@@ -1,0 +1,43 @@
+name: Check Versions
+
+# On PRs: checks version consistency (SKILL.md, plugin.json, marketplace.json, VERSIONS.md),
+# description limits, and that a PR changing skill files bumps the version.
+# Never publishes — releases are built by release.yml on main.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches: [main]
+    paths:
+      - "skills/**"
+      - "VERSIONS.md"
+      - ".claude-plugin/**"
+      - "packaging/**"
+      - "scripts/**"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: check-versions-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft != true && github.actor != 'dependabot[bot]'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Check skill and repository versions
+        run: python3 scripts/check_versions.py --base "origin/${{ github.base_ref }}"
+
+      - name: Build archives (dry run)
+        run: python3 scripts/package_skill.py --output dist

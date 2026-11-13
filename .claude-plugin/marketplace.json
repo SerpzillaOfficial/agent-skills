@@ -1,0 +1,20 @@
+{
+  "name": "serpzilla",
+  "owner": {
+    "name": "Serpzilla LTD"
+  },
+  "metadata": {
+    "description": "Serpzilla plugins for Claude: buying SEO guest posts and link insertions on donor sites through the Serpzilla platform."
+  },
+  "plugins": [
+    {
+      "name": "serpzilla-seo-guest-posting",
+      "source": "./",
+      "description": "Buy SEO guest posts and link insertions on trusted donor sites via Serpzilla: projects, donor search by DR/traffic/price/language, articles and URLs with anchor texts, placement management.",
+      "version": "1.1.0",
+      "category": "marketing",
+      "keywords": ["seo", "backlinks", "link-building", "guest-posts", "serpzilla"],
+      "homepage": "https://github.com/SerpzillaOfficial/agent-skills"
+    }
+  ]
+}
