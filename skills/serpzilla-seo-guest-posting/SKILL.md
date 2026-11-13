@@ -1,5 +1,6 @@
 ---
 name: serpzilla-seo-guest-posting
+version: 1.1.0
 description: Buy SEO guest posts and link insertions on trusted donor sites via the Serpzilla platform — create projects, search and filter donors by DR/traffic/price/language, upload articles or URLs with anchor texts, purchase placements, and manage their lifecycle. Use whenever the user wants to build backlinks, find donor sites for guest posting, buy or approve link placements, or do anything with Serpzilla, even if they don't mention it by name.
 ---
 
